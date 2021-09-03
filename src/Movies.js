@@ -30,7 +30,7 @@ const Movies = () => {
                             <div key={idx}>
                                 <Link to={`/movie/${el.id}`}>
                                      <div>
-                                         <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${el.poster_path}`} alt='#' width='150' height='225'/>
+                                         <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${el.poster_path}`} className='movieImg' alt='#' width='150' height='225'/>
                                      </div>
                                       <h4 className='title'> {el.original_title}</h4>
                                 </Link>
