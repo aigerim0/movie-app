@@ -10,7 +10,7 @@ function App() {
 
 
         <BrowserRouter>
-            <div className={'container'}>
+            <div className='container my-5'>
                 <Route exact path='/'><Movies/></Route>
                 <Route path='/movie/:id'><MoviesDetails/></Route>
                 <Route path='/actors/:id'><AllActors/></Route>

@@ -1,0 +1,136 @@
+@import 'node_modules/react-modal-video/scss/modal-video.scss';
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+p{
+    font-size: 14px;
+}
+body{
+    background-color:#040404 ;
+    color: #fff;
+    position: relative;
+    background: transparent;
+    font-family: 'Besley',sans-serif;
+}
+body::before{
+    content: "";
+    position: fixed;
+    background: #040404 ;
+    left: 0;
+    background-size: contain;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: -1;
+}
+a{
+    text-decoration: none;
+}
+
+
+img{
+    width: 150px;
+    height: 200px;
+}
+.grid{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4,1fr);
+    margin-top: 20px;
+}
+
+.movieDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 20px 0;
+
+}
+b{
+    color:  #18d26e;
+}
+.mDetails-leftSide{
+    margin-right: 20px ;
+}
+.mDetails-rightSide p {
+font-size: 13px;
+}
+.title{
+    color: #18d26e;
+    font-size: 16px;
+    margin: 10px 0 20px 0;
+    width: 100%;
+    text-align: center;
+}
+.pageBtn{
+    margin: 5px;
+    padding: 3px;
+}
+.backBtn {
+    margin-top: 10px;
+    background: none;
+    border: none;
+}
+.movieImg{
+    width: 100%;
+    height: 100%;
+}
+.moviesDetails-title{
+    font-size: 12px;
+    text-align: left;
+    color: #18d26e;
+
+}
+.btnBack{
+    background: none;
+    color: #18d26e;
+    font-size: 25px;
+}
+.moviesDetails-img{
+    width: 	70px ;
+    height: 100px;
+}
+.moviesDetails-title-div{
+    width: 100%;
+    margin: 10px 0 20px 0;
+
+}
+.moviesDetails-btn{
+  display: flex;
+    justify-content: right;
+    margin: 10px 0 10px 0;
+
+
+}
+.moviesDetails-btn button{
+     background: rgba(255,255,255,0.1);
+    border: none;
+     color: #18d26e;
+    padding: 5px;
+
+
+
+}
+.moviesDetails-btn button:hover{
+    background: #18d26e;
+    color: #ffffff;
+    transition: 1s;
+}
+.allActors-img{
+    width: 	100px ;
+    height: 150px;
+}
+.allActors-name{
+   margin: 10px 0 20px 0;
+    color: #18d26e;
+}
+.allActors-title{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+

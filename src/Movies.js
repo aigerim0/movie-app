@@ -16,28 +16,31 @@ const Movies = () => {
     return (
 
         <div>
-
-
             {
-                Array(6).fill(0).map((item, idx) =>
-                    <button className='pageBtn' onClick={() => handlePage(idx + 1)}>{idx + 1}</button>
+                [...Array(6).keys()].map((item, idx) =>
+                    <button key={item} type='button'
+                            className={`btn btn-secondary mx-1 ${page === item + 1 && 'btn-danger'}`}
+                            onClick={() => handlePage(idx + 1)}>{idx + 1}</button>
                 )
             }
 
-                <div className='grid'>
-                    {
-                        movie.map((el, idx) =>
-                            <div key={idx}>
-                                <Link to={`/movie/${el.id}`}>
-                                     <div>
-                                         <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${el.poster_path}`} className='movieImg' alt='#' width='150' height='225'/>
-                                     </div>
-                                      <h4 className='title'> {el.original_title}</h4>
-                                </Link>
-                            </div>
-                        )
-                    }
-                </div>
+            <div className='row my-5 '>
+                {
+                    movie.map((el, idx) =>
+                        <div className='col-md-3  col-sm-6 md-3' key={el.id}>
+                            <Link to={`/movie/${el.id}`}>
+                             <div className='releases-item__poster'>
+                                 <div className='movie-img'>
+                                     <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${el.poster_path}`}
+                                          className='movieImg w100 ' alt={el.title}/>
+                                 </div>
+                             </div>
+                                <h3 className='title '> {el.original_title}</h3>
+                            </Link>
+                        </div>
+                    )
+                }
+            </div>
 
         </div>
     )
