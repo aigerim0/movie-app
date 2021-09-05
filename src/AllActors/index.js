@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import man from "../img/ee5fb3d0-4d3c-43f4-ab2f-70d397f472e1.jpg";
 
@@ -26,13 +26,16 @@ const AllActors = () => {
         <div className='grid'>
             {
                 actors.map(item =>
-                    <div>
-                        {/*<img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.profile_path}`} width='138' height='175' alt="#"/>*/}
-                        {item.profile_path === null ? <img src={man} alt="" height='300' width='300'/> :<img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.profile_path}`} alt=""/>}
-                        <h4>Name:{item.name }</h4>
-                        <h6>Character:{item.character}</h6>
+                    <Link to={`/person/${item.id}`} key={item.id}>
 
-                    </div>
+                        <div>
+                            {/*<img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.profile_path}`} width='138' height='175' alt="#"/>*/}
+                            {item.profile_path === null ? <img src={man} alt="" height='300' width='300'/> :<img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.profile_path}`} alt=""/>}
+                            <h4>Name:{item.name }</h4>
+                            <h6>Character:{item.character}</h6>
+
+                        </div>
+                    </Link>
 
                 )
 

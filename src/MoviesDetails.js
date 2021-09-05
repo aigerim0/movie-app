@@ -7,7 +7,7 @@ import man from './img/ee5fb3d0-4d3c-43f4-ab2f-70d397f472e1.jpg'
 const MoviesDetails = () => {
     const [film, setFilm] = useState({})
     const [actors, setActors] = useState([])
-    const [isLoding,setIsLoding] = useState(true)
+    const [isLoading,setIsLoading] = useState(true)
     const moviesParams = useParams()
     const history = useHistory()
 
@@ -15,7 +15,7 @@ const MoviesDetails = () => {
         axios(`https://api.themoviedb.org/3/movie/${moviesParams.id}?&language=%27rus%27&api_key=6f19f87e3380315b9573c4270bfc863c`)
             .then(({data}) =>{
                 setFilm(data)
-                setIsLoding(false)
+                setIsLoading(false)
             })
         axios(`https://api.themoviedb.org/3/movie/${moviesParams.id}/credits?&language=%27rus%27&api_key=6f19f87e3380315b9573c4270bfc863c`)
             .then(({data}) => setActors(data.cast))
@@ -26,8 +26,8 @@ const handelWatchMOre = () => {
     const Back = () => {
         history.goBack()
     }
-  if(isLoding) {
-      return 'Loding...'
+  if(isLoading) {
+      return 'Loading...'
   }
     return (
 
