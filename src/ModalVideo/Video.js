@@ -1,7 +1,6 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,} from 'react'
 import ModalVideo from 'react-modal-video'
-import axios from "axios";
-import {useParams} from "react-router-dom";
+
 
 
 

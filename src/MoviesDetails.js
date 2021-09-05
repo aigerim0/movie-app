@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams, useHistory, Link} from 'react-router-dom'
 import man from './img/ee5fb3d0-4d3c-43f4-ab2f-70d397f472e1.jpg'
-import YouTube from 'react-youtube';
 import Video from "./ModalVideo/Video";
 
 
@@ -40,15 +39,9 @@ const MoviesDetails = () => {
     const Back = () => {
         history.goBack()
     }
-    const opts = {
-        height: '390',
-        width: '640',
-        playerVars: {
-            autoplay: 0,
-        }
-    }
 
-    if (isLoading && actorsLoading ) {
+
+    if (isLoading && actorsLoading && trailersIsloading ) {
         return <div className='d-flex justify-content-center  align-items-center'>
             <div className="spinner-border text-danger" role="status">
                 <span className="visually-hidden">Loading...</span>
