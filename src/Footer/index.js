@@ -8,7 +8,7 @@ const Footer = () => {
 
 
         <p>2021</p>
-        <p>Bolotova Aigerim</p>
+        <p className='footer-item'>Bolotova Aigerim</p>
 
 </div>
         </footer>

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams, useHistory, Link} from 'react-router-dom'
 import noPhoto from "../img/noPhoto.jpg";
+import man from "../img/ee5fb3d0-4d3c-43f4-ab2f-70d397f472e1.jpg";
 
 
 const ActorInfo = () => {
@@ -35,9 +36,14 @@ const ActorInfo = () => {
                 <button className='backBtn' onClick={Back}><i className='btnBack bx  bx-arrow-back'></i></button>
             </div>
             <div className='row'>
-                <div className='col-md-3'>
-                    <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${actor.profile_path}`} alt="#"/>
+                <div className='col-md-3 actorInfo-img'>
+                  <div>
+                      {
+                          actor.profile_path === null  ?  <img className='moviesDetails-img' src={man} alt="#" height='400' width='300'/>:     <img  src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${actor.profile_path}`} alt="#"/>
+                      }
+                  </div>
                 </div>
+           
                 <div className='col-md-9'>
 
                     <h2>{actor.name}</h2>
@@ -48,7 +54,7 @@ const ActorInfo = () => {
                 </div>
             </div>
             <div className='row'>
-                <div className='col-md-6'>
+                <div className='col-md-4'>
                     <h5> Personal information</h5>
                     <p><b>Birthday:</b> {actor.birthday}</p>
                     <span><b>Place of Birth:</b> {actor.place_of_birth}</span>
@@ -66,45 +72,54 @@ const ActorInfo = () => {
                     </p>
                     <p><b>Known for:</b> {actor.known_for_department}</p>
                 </div>
-                <div className='col-md-6'>
+                <div className='col-md-8'>
 
                     {
                         film.filter(el => !el.release_date).sort((a, b) => new Date(a) - new Date(b))
                             .map(item =>
-
-                                <div>{item.title}</div>
+                         <div className='d-flex release_date '>
+                             <div>****-**-**</div>
+                             <i className='bx bx-radio-circle allActors-icon'></i>
+                             <Link to={`/movie/${item.id}`}>
+                                 <div className='text-white'>{item.title}</div>
+                             </Link>
+                         </div>
                             )
                     }
                     {
                         film.filter(el => el.release_date).sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
                             .map(item =>
-                                <div className='d-flex'>
+                                <div className='d-flex release_date '>
                                     <div>{item.release_date}</div>
+                                    <i className='bx bx-radio-circle allActors-icon'></i>
                                     <Link to={`/movie/${item.id}`}>
-                                        <div>{item.title}</div>
+                                        <div className='text-white'>{item.title}</div>
                                     </Link>
                                 </div>
                             )
                     }
                 </div>
             </div>
-
+            <div className='row my-5'>
             {
                 film.filter(el => el.vote_average).sort((a, b) => b.vote_average - a.vote_average).slice(0, 10).map(item =>
 
-                    <div>
+                    <div className='allActors-movie col-md-3  col-sm-6 md-3 allActors-movie-box ' >
                         <Link to={`/movie/${item.id}`}>
-                            <div className='allActors-img'>
+
                                 <div>{item.poster_path ?
                                     <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`}
-                                         className='movieImg w100 ' alt={item.title}/> :
-                                    <img src={noPhoto} alt="#"/>}</div>
-                            </div>
-                            <div>{item.title}</div>
+                                         alt={item.title} className='allActors-movie-img'/> :
+                                    <img src={noPhoto} alt="#"/>}
+                                </div>
+
+
+                            <div className='allActors-movie-title'>{item.title}</div>
                         </Link>
                     </div>
                 )
             }
+            </div>
         </div>
     )
 

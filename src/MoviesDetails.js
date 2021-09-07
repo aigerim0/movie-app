@@ -92,7 +92,7 @@ const MoviesDetails = () => {
                         </div>
                     </div>
                 </div>
-                <p><b>Overview:</b> {film.overview}</p>
+                <p className='overview'><b>Overview:</b> {film.overview}</p>
             </div>
 
             <div className='row'>
@@ -122,19 +122,12 @@ const MoviesDetails = () => {
     <button  onClick={handelWatchMOre}>watch more...</button>
 </div>
 
-       <div className='row'>
-           {
-               trailers.map(el =>
-                   <div className='col-md-3'>
+            {
+                trailers.map(el =>
+                    <div><Video key={el.id} id={el.key}/></div>
 
-
-                               <Video key={el.id} id={el.key}/>
-
-                   </div>
-
-               )
-           }
-       </div>
+                )
+            }
         </div>
     )
 }

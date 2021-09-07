@@ -11,10 +11,12 @@ const Video = ({id}) => {
 
 
     return (
-        <div>
-            <React.Fragment>
-                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={id} onClose={() => setOpen(false)}/>
-                <button className="btn-primary" onClick={() => setOpen(true)}>Video</button>
+        <div >
+            <React.Fragment >
+               <div className='video'>
+                   <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={id} onClose={() => setOpen(false)}/>
+                   <button className="btn-primary" onClick={() => setOpen(true)}>Video</button>
+               </div>
             </React.Fragment>
 
 

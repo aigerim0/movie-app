@@ -69,23 +69,31 @@ const [loading,setLoading] = useState(true)
         <div>
             <button className='backBtn' onClick={Back}><i className='btnBack bx  bx-arrow-back'></i></button>
         </div>
-        {
-        search.results.length ?  search.results.map(el =>
+   <div  className='row my-5 '>
+       {
+           search.results.length ?  search.results.map(el =>
 
-            <div className='col-md-3  col-sm-6 md-3' key={el.id}>
-                <Link to={`/movie/${el.id}`}>
-                    <div>{el.poster_path ?
-                        <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${el.poster_path}`}
-                             className='movieImg w100 ' alt={el.title}/> :
-                        <img src={noPhoto} alt="#"/>}</div>
-                    <div>{el.title}</div>
+               <div className='col-md-3  col-sm-6 md-3' key={el.id}>
+                  <div  className='box'>
+                      <Link to={`/movie/${el.id}`}>
+                        <div className='releases-item__poster'>
+                            <div className='movie-img'>
+                                <div>{el.poster_path ?
+                                    <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${el.poster_path}`}
+                                         className='movieImg w100 ' alt={el.title}/> :
+                                    <img src={noPhoto} alt="#"/>}</div>
+                                <div className='title '>{el.title}</div>
+                            </div>
+                        </div>
 
-                </Link>
-            </div>
-        ) :    <h3>Nothing found!</h3>
+                      </Link>
+                  </div>
+               </div>
+           ) :    <h3>Nothing found!</h3>
 
 
-        }
+       }
+   </div>
     </div>
 <div className='pageButtons'>{Buttons}</div>
         </div>
