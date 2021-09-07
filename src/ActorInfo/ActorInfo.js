@@ -7,8 +7,8 @@ import noPhoto from "../img/noPhoto.jpg";
 const ActorInfo = () => {
     const [actor, setActor] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    const [film,setFilm] = useState([])
-    const [isLoadingFilm,setIsLoadingFilm] = useState(true)
+    const [film, setFilm] = useState([])
+    const [isLoadingFilm, setIsLoadingFilm] = useState(true)
     const {id} = useParams()
     const history = useHistory()
     useEffect(() => {
@@ -41,13 +41,15 @@ const ActorInfo = () => {
                 <div className='col-md-9'>
 
                     <h2>{actor.name}</h2>
-                    <p><b>Biography:</b> {actor.biography ? actor.biography: `We don't have a biography for ${actor.name}. `}</p>
+                    <p>
+                        <b>Biography:</b> {actor.biography ? actor.biography : `We don't have a biography for ${actor.name}. `}
+                    </p>
 
                 </div>
             </div>
             <div className='row'>
                 <div className='col-md-6'>
-                   <h5> Personal information</h5>
+                    <h5> Personal information</h5>
                     <p><b>Birthday:</b> {actor.birthday}</p>
                     <span><b>Place of Birth:</b> {actor.place_of_birth}</span>
                     <p><b>Also known as:</b>
@@ -67,14 +69,14 @@ const ActorInfo = () => {
                 <div className='col-md-6'>
 
                     {
-                        film.filter(el => !el.release_date).sort((a,b) => new Date(a) - new Date(b) )
+                        film.filter(el => !el.release_date).sort((a, b) => new Date(a) - new Date(b))
                             .map(item =>
 
                                 <div>{item.title}</div>
                             )
                     }
                     {
-                        film.filter(el => el.release_date).sort((a,b) => new Date(a.release_date) - new Date(b.release_date) )
+                        film.filter(el => el.release_date).sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
                             .map(item =>
                                 <div className='d-flex'>
                                     <div>{item.release_date}</div>
@@ -88,18 +90,19 @@ const ActorInfo = () => {
             </div>
 
             {
-                film.filter(el => el.vote_average ).sort((a,b) => b.vote_average - a.vote_average).slice(0,10).map(item =>
+                film.filter(el => el.vote_average).sort((a, b) => b.vote_average - a.vote_average).slice(0, 10).map(item =>
 
-                <div>
-                    <Link to={`/movie/${item.id}`}>
-                        <div>rating {item.vote_average}</div>
-                        <div className='allActors-img'>
-                            <div>{item.poster_path ?    <img  src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`}
-                                                            className='movieImg w100 ' alt={item.title}/> : <img src={noPhoto} alt="#"/>}</div>
-                        </div>
-                    <div>{item.title}</div>
+                    <div>
+                        <Link to={`/movie/${item.id}`}>
+                            <div className='allActors-img'>
+                                <div>{item.poster_path ?
+                                    <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`}
+                                         className='movieImg w100 ' alt={item.title}/> :
+                                    <img src={noPhoto} alt="#"/>}</div>
+                            </div>
+                            <div>{item.title}</div>
                         </Link>
-                </div>
+                    </div>
                 )
             }
         </div>

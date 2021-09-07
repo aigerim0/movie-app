@@ -1,40 +1,93 @@
 import React, {useEffect, useState} from 'react';
-import {useParams,Link} from "react-router-dom";
+import {useParams,Link,useHistory} from "react-router-dom";
 import axios from "axios";
+import noPhoto from "../img/noPhoto.jpg";
 
 const Search = () => {
-    const [search, setSearch] = useState([])
+    const [search, setSearch] = useState({})
     const [page,setPage] = useState(1)
-    const [error,setError] = useState('')
+const [loading,setLoading] = useState(true)
     const searchParams = useParams()
+    const history = useHistory()
     useEffect(() => {
-        axios(`https://api.themoviedb.org/3/search/multi?api_key=6f19f87e3380315b9573c4270bfc863c&language=%27rus%27&query=${searchParams.name}&page=${page}&include_adult=false`)
+        axios(`https://api.themoviedb.org/3/search/movie?api_key=6f19f87e3380315b9573c4270bfc863c&language=%27rus%27&query=${searchParams.name}&page=${page}&include_adult=false`)
             .then(({data}) => {
-               if (data.results){
-                   setSearch(data.results)
-               }else {
-                   setError('No results!')
-               }
+                setSearch(data)
+                setLoading(false)
             })
     },[page,searchParams])
+
+    const Back = () => {
+        history.goBack()
+    }
+    let Buttons = ''
+    if (search.total_pages > 1 && page === 1) {
+        Buttons = (
+         <div className='btnDiv'>
+             <button  className="btn  btn-danger " onClick={() => {
+                 setPage(page + 1)
+             }}>NEXT<i className='bx bx-chevron-right'></i></button>
+         </div>
+        )
+    }else if (search.total_pages > page && page > 1){
+        Buttons = (
+            <div className='btnDiv'>
+                <button  className="btn  btn-danger " onClick={() => {
+                    setPage(page - 1)
+                }}><i className='bx bx-chevron-left'></i>PREV</button>
+                <button  className="btn  btn-danger " onClick={() => {
+                    setPage(page + 1)
+                }}>NEXT<i className='bx bx-chevron-right'></i></button>
+            </div>
+        )
+
+    }else if(search.total_pages === page) {
+      Buttons = (
+       <div className='btnDiv'>
+           <button  className="btn  btn-danger" onClick={() => {
+               setPage(page - 1)
+           }}><i className='bx bx-chevron-left'></i>PREV</button>
+       </div>
+      )
+    }
+
+
+
+
+
+
+    if (loading){
+        return <div className='d-flex justify-content-center  align-items-center'>
+            <div className="spinner-border text-danger" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
     return (
         <div className='row'>
-            {
-                search.map(el =>
+    <div  className='row'>
+        <div>
+            <button className='backBtn' onClick={Back}><i className='btnBack bx  bx-arrow-back'></i></button>
+        </div>
+        {
+        search.results.length ?  search.results.map(el =>
 
-                    <div className='col-md-3  col-sm-6 md-3' key={el.id}>
-                        <Link to={`/movie/${el.id}`}>
+            <div className='col-md-3  col-sm-6 md-3' key={el.id}>
+                <Link to={`/movie/${el.id}`}>
+                    <div>{el.poster_path ?
                         <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${el.poster_path}`}
-                            alt={el.title} width='100' height='150'/>
-                        <div>{el.title}</div>
-                        <div>
-                            {error}
-                        </div>
-                        </Link>
-                    </div>
-                )
-            }
+                             className='movieImg w100 ' alt={el.title}/> :
+                        <img src={noPhoto} alt="#"/>}</div>
+                    <div>{el.title}</div>
 
+                </Link>
+            </div>
+        ) :    <h3>Nothing found!</h3>
+
+
+        }
+    </div>
+<div className='pageButtons'>{Buttons}</div>
         </div>
     )
 }

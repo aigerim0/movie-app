@@ -4,6 +4,7 @@ import MoviesDetails from "./MoviesDetails";
 import AllActors from "./AllActors";
 import ActorInfo from "./ActorInfo/ActorInfo";
 import Search from "./Search/Search";
+import Header from "./Header";
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
 
         <BrowserRouter>
+            <Header/>
             <div className='container my-5'>
                 <Route exact path='/'><Movies/></Route>
                 <Route path='/movie/:id'><MoviesDetails/></Route>
