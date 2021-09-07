@@ -29,17 +29,19 @@ const AllActors = () => {
     <button className='backBtn' onClick={Back}><i className='btnBack bx  bx-arrow-back'></i></button>
 </div>
             <h3 className='allActors-title'>{film.original_title}</h3>
-        <div className='grid'>
+        <div className='row'>
             {
                 actors.map(item =>
-                    <Link to={`/person/${item.id}`} key={item.id}>
 
-                        <div>
+
+                        <div className='col-md-3 col-sm-6 md-3'>
+                            <Link to={`/person/${item.id}`} key={item.id}>
                             {/*<img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.profile_path}`} width='138' height='175' alt="#"/>*/}
-                            {item.profile_path === null ?  <img className='allActors-img' src={man} alt="#" /> :<img className='allActors-img' src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.profile_path}`} alt=""/>}
+                            {item.profile_path === null ?  <img className='allActors-img' src={man} alt="#" /> :<img className='allActors-img' src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.profile_path}`} alt="#"/>}
                             <p className='allActors-name'>{item.name }</p>
+                            </Link>
                         </div>
-                    </Link>
+
 
                 )
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import {useParams, useHistory, Link} from 'react-router-dom'
 import man from './img/ee5fb3d0-4d3c-43f4-ab2f-70d397f472e1.jpg'
 import Video from "./ModalVideo/Video";
+import noPhoto from "./img/noPhoto.jpg";
 
 
 
@@ -41,7 +42,7 @@ const MoviesDetails = () => {
     }
 
 
-    if (isLoading && actorsLoading && trailersIsloading ) {
+    if (isLoading || actorsLoading || trailersIsloading ) {
         return <div className='d-flex justify-content-center  align-items-center'>
             <div className="spinner-border text-danger" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -57,8 +58,8 @@ const MoviesDetails = () => {
             <div className='row'>
                 <h3 className='d-flex justify-content-center moviesDetails-title-div '>{film.original_title}</h3>
                 <div className='col-md-3  '>
-                    <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${film.poster_path}`} width='150'
-                         height='225' alt="#"/>
+                    <div>{film.poster_path ?    <img  src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${film.poster_path}`}
+                                                      className='movieImg w100 ' alt={film.title}/> : <img src={noPhoto} alt="#"/>}</div>
                 </div>
                 <div className='col-md-9 '>
                     <div className=' d-flex'>

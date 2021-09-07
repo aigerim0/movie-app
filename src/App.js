@@ -3,6 +3,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import MoviesDetails from "./MoviesDetails";
 import AllActors from "./AllActors";
 import ActorInfo from "./ActorInfo/ActorInfo";
+import Search from "./Search/Search";
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
                 <Route path='/movie/:id'><MoviesDetails/></Route>
                 <Route path='/actors/:id'><AllActors/></Route>
                 <Route path='/person/:id'><ActorInfo/></Route>
+                <Route path='/search/multi/:name'><Search/></Route>
+
             </div>
         </BrowserRouter>
 

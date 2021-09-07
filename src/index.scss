@@ -6,7 +6,7 @@
 
 }
 p{
-    font-size: 14px;
+    font-size: 16px;
 }
 body{
     background-color:#040404 ;
@@ -39,7 +39,7 @@ img{
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(4,1fr);
-    margin-top: 20px;
+  margin: 0 auto;
 }
 
 .movieDetails{
@@ -120,8 +120,8 @@ font-size: 13px;
     transition: 1s;
 }
 .allActors-img{
-    width: 	100px ;
-    height: 150px;
+    width: 	150px ;
+    height: 200px;
 }
 .allActors-name{
    margin: 10px 0 20px 0;
