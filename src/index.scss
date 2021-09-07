@@ -187,8 +187,9 @@ background: none;
 }
 .home{
     margin-right: 10px;
-    color: #18d26e;
-    transition: 1s;
+    color:#18d26e;
+
+  transition: 1s;
 }
 .home:hover{
     color: #ffffff;
@@ -198,5 +199,26 @@ background: none;
     justify-content: center;
 }
 .box:hover{
+  box-shadow:0 0 8px 3px #60bb8a; ;
+}
+.box h3 {
+padding: 20px 0 20px 0;
+  font-size: 20px;
+}
+.box{
+  height: 500px;
+margin-bottom: 40px;
 
+}
+.footer{
+    background: rgba(255,255,255,0.1);
+    padding: 15px 5px 15px 5px;
+    display: flex;
+  justify-content: center;
+    align-items: center;
+}
+.footer-desc{
+    display: flex;
+    justify-content: center;
+text-align: center;
 }

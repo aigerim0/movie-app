@@ -5,6 +5,7 @@ import AllActors from "./AllActors";
 import ActorInfo from "./ActorInfo/ActorInfo";
 import Search from "./Search/Search";
 import Header from "./Header";
+import Footer from "./Footer";
 
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
                 <Route path='/actors/:id'><AllActors/></Route>
                 <Route path='/person/:id'><ActorInfo/></Route>
                 <Route path='/search/multi/:name'><Search/></Route>
-
             </div>
+            <Footer/>
         </BrowserRouter>
 
 
