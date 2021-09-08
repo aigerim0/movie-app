@@ -94,8 +94,10 @@ const [loading,setLoading] = useState(true)
 
        }
    </div>
+
     </div>
 <div className='pageButtons'>{Buttons}</div>
+
         </div>
     )
 }
