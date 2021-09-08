@@ -1,13 +1,12 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Link,useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import noPhoto  from './img/noPhoto.jpg'
 
 const Movies = () => {
     const [page, setPage] = useState(1)
     const [movie, setMovie] = useState([])
-    const [search,setSearch] = useState('')
-    const history = useHistory()
+
     useEffect(() => {
         axios(`https://api.themoviedb.org/3/discover/movie?page=${page}&language=%27rus%27&api_key=6f19f87e3380315b9573c4270bfc863c`)
             .then(({data}) => setMovie(data.results))
