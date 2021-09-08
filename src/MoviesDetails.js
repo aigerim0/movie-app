@@ -105,7 +105,6 @@ const MoviesDetails = () => {
                          {item.profile_path === null ? <img className='moviesDetails-img' src={man} alt="#" height='400' width='300'/> :
                              <img className='moviesDetails-img' src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.profile_path}`}
                                   alt="#"/>}
-                         {/*<img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.profile_path}`} width='138' height='175' alt="#"/>*/}
                         <div className='moviesDetails-title-div'>
                             <h5 className='moviesDetails-title'>{item.name}</h5>
                         </div>
