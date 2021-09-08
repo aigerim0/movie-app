@@ -11,6 +11,7 @@ const Header = () => {
     const handleBtn = () => {
         if (search.trim()) {
             history.push(`/search/multi/${search}`)
+            setSearch('')
         }
     }
     return (
@@ -20,7 +21,7 @@ const Header = () => {
               <i className='bx bx-camera-movie logo'></i>
               <div className='search-inputBtn'>
                   <Link to={`/`} className='home'>Home</Link>
-                  <input className='search' onChange={handleInput} type="text" placeholder='Search...'/>
+                  <input className='search' value={search} onKeyDown={e => {if(e.key === "Enter") handleBtn()}} onChange={handleInput} type="text" placeholder='Search...'/>
                   <button onClick={handleBtn} className='search-btn'><i className='bx bx-search'></i></button>
 
               </div>
@@ -30,3 +31,4 @@ const Header = () => {
 };
 
 export default Header;
+
